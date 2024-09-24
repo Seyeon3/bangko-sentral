@@ -12,12 +12,6 @@ function sessionFloatingAlert($type, $message)
   }
 }
 
-function generateIssuanceReference($length = 10) {
-  $prefix = 'ISS'; // You can customize the prefix if needed
-  $randomString = $prefix . substr(uniqid(mt_rand(), true), 0, $length - strlen($prefix));
-  return $randomString;
-}
-
 function uppercaseFirstLetter($str) {
   return ucfirst($str);
 }
@@ -90,36 +84,7 @@ function relativeTime($timestamp)
     return date("F d, Y H:i A", $timestamp);
   }
 }
-function ticketStatusBadge($data)
-{
-  if ($data == 'New') {
-    return 'badge text-bg-success';
-  }
-  if ($data == 'Open') {
-    return 'badge text-bg-primary';
-  }
-  if ($data == 'Solved') {
-    return 'badge text-bg-warning';
-  }
-  if ($data == 'Closed') {
-    return 'badge text-bg-danger';
-  }
-}
-function ticketStatusColor($data)
-{
-  if ($data == 'New') {
-    return 'text-success';
-  }
-  if ($data == 'Open') {
-    return 'text-primary';
-  }
-  if ($data == 'Solved') {
-    return 'text-warning';
-  }
-  if ($data == 'Closed') {
-    return 'text-danger';
-  }
-}
+
 function isNullDate($datetime)
 {
   if ($datetime == null) {
