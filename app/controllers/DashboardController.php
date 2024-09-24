@@ -14,6 +14,7 @@ class DashboardController extends Controller
     $data['current_page'] = "Dashboard";
     $USER = $this->loadModel("UserModel");
     $data['login_attempts_table'] = $USER->selectAllLoginAttempts();
+    $data['contact_messages_table'] = $USER->selectAllContactMessages();
     $this->loadView("dashboard", $data);
   }
   

@@ -1,6 +1,13 @@
 <?php
 class UserModel
 {
+  function selectAllContactMessages()
+  {
+    $DB = new Database();
+    $query = "SELECT * FROM contact_messages ORDER BY created_at DESC";
+    $result = $DB->read($query);
+    return $result ? $result : false;
+  }
   function selectAllLoginAttempts()
   {
     $DB = new Database();

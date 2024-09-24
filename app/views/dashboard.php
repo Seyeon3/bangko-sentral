@@ -2,37 +2,12 @@
 
 <body>
   <div class="d-flex flex-row">
-    <aside class="border" style="width: 333px; height:100vh;">
+    <?php $this->loadView("components/admin-panel-aside-nav-left", $data); ?>
 
-      <ul class="nav d-flex flex-column border-bottom">
-        <li class="nav-item" style="height:60px;">
-          <a class="nav-link d-flex align-items-center h-100">
-            <img src="logo.png" alt="Logo" width="30" height="30" class="ms-2 me-3">
-            <span>Admin Panel</span>
-          </a>
-        </li>
-      </ul>
-
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link text-secondary active" href="#"><i class="bi bi-speedometer2 m-3 fs-5"></i>Dashboard</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-secondary" href="#"><i class="bi bi-people m-3 fs-5"></i>Users</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-secondary" href=""><i class="bi bi-person-circle m-3 fs-5"></i><?= $_SESSION['full_name'] ?></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-danger" href="logout"><i class="bi bi-box-arrow-left m-3 fs-5"></i>Logout</a>
-        </li>
-      </ul>
-    </aside>
-
-    <div class="container-fluid">
+    <div class="container-fluid" style="height:100vh; overflow:auto;">
       <main class="p-4">
         <h4 class="mb-4">Dashboard</h4>
-        <div class="card">
+        <div class="card mb-4">
           <div class="card-body">
             <h4 class="card-title">Login Attempts</h4>
             <table class="table table-striped">
@@ -56,6 +31,41 @@
                       <td><?php echo htmlspecialchars($row->ip_address != '::1' ? $row->ip_address : '127.0.0.1'); ?></td>
                       <td><?php echo datePrettierWithTime(htmlspecialchars($row->timestamp)); ?></td>
                       <td><?php echo $row->success ? '<span class="badge text-bg-success">Success</span>' : '<span class="badge text-bg-danger">Failed</span>'; ?></td>
+                    </tr>
+                  <?php endforeach; ?>
+                <?php else: ?>
+                  <tr>
+                    <td colspan="4" class="text-center">No login attempts found.</td>
+                  </tr>
+                <?php endif; ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-body">
+            <h4 class="card-title">Messages</h4>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Subject</th>
+                  <th scope="col">Message</th>
+                  <th scope="col">Sent Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php if (isset($data['contact_messages_table'])): ?>
+                  <?php foreach ($data['contact_messages_table'] as $row): ?>
+                    <tr>
+                      <th scope="row"><?php echo htmlspecialchars($row->contact_message_id); ?></th>
+                      <td><?php echo htmlspecialchars($row->full_name); ?></td>
+                      <td><?php echo htmlspecialchars($row->email); ?></td>
+                      <td><?php echo htmlspecialchars($row->subject); ?></td>
+                      <td><?php echo htmlspecialchars($row->message); ?></td>
+                      <td><?php echo datePrettierWithTime(htmlspecialchars($row->created_at)); ?></td>
                     </tr>
                   <?php endforeach; ?>
                 <?php else: ?>
