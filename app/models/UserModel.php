@@ -1,6 +1,14 @@
 <?php
 class UserModel
 {
+  function selectAllLoginAttempts()
+  {
+    $DB = new Database();
+    $query = "SELECT * FROM login_attempts ORDER BY timestamp DESC";
+    $result = $DB->read($query);
+    return $result ? $result : false;
+  }
+
   function insertLoginAttempt($username, $success)
   {
     $DB = new Database();

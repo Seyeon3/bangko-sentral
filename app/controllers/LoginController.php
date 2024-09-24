@@ -62,6 +62,7 @@ class LoginController extends Controller
           // Successful authentication
           $_SESSION['user_id'] = $returnData[0]->user_id;
           $_SESSION['username'] = $returnData[0]->username;
+          $_SESSION['full_name'] = $returnData[0]->full_name;
           $USER->insertLoginAttempt($_SESSION['input_username'], true);
           header('Location: ' . PAGE . 'dashboard'); // Redirect to the dashboard page
           exit();

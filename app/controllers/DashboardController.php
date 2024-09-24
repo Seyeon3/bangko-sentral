@@ -12,9 +12,11 @@ class DashboardController extends Controller
   function index()
   {
     $data['current_page'] = "Dashboard";
+    $USER = $this->loadModel("UserModel");
+    $data['login_attempts_table'] = $USER->selectAllLoginAttempts();
     $this->loadView("dashboard", $data);
   }
-
+  
   function invalid_page()
   {
     $data['current_page'] = "Invalid Page";

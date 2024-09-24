@@ -4,7 +4,7 @@
 
   <?php $this->loadView("components/top-navbar", $data); ?>
   <div class="container d-flex flex-column align-items-center p-3">
-    <div class="card" style="max-width:400px;">
+    <div class="card w-100" style="max-width:400px;">
       <div class="card-body p-3">
         <div class="text-center">
           <h3>Login</h3>
@@ -47,7 +47,7 @@
           </div>
 
           <div
-            class="mb-3 d-flex justify-content-center border rounded p-3 <?= (isset($_SESSION['login_form_errors_messages']) && is_array($_SESSION['login_form_errors_messages']) && in_array("reCAPTCHA verification failed. Please try again.", $_SESSION['login_form_errors_messages'])) ? 'border-danger' : ''; ?>"
+            class="mb-3 d-flex justify-content-center border rounded py-3 <?= (isset($_SESSION['login_form_errors_messages']) && is_array($_SESSION['login_form_errors_messages']) && in_array("reCAPTCHA verification failed. Please try again.", $_SESSION['login_form_errors_messages'])) ? 'border-danger' : ''; ?>"
             style="background-image: url('assets/img/bg_for_recaptcha.png');">
             <div class="g-recaptcha" data-sitekey="6Lfs0k0qAAAAAChTLR023tGAFt1yvkSaOrkudjfy"></div>
           </div>
@@ -65,7 +65,6 @@
   <?php unset($_SESSION['login_form_errors_messages']); ?>
   <?php unset($_SESSION['input_username']); ?>
   <?php $this->loadView("components/scripts"); ?>
-
 </body>
 
 </html>

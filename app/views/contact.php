@@ -4,7 +4,7 @@
 
   <?php $this->loadView("components/top-navbar", $data); ?>
   <div class="container d-flex flex-column align-items-center p-3">
-    <div class="card" style="max-width:400px;">
+    <div class="card w-100" style="max-width:400px;">
       <div class="card-body p-3">
         <div class="text-center">
           <h3>Contact</h3>
