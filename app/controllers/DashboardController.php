@@ -1,5 +1,5 @@
 <?php
-class ProfileController extends Controller
+class DashboardController extends Controller
 {
   public function __construct()
   {
@@ -11,8 +11,7 @@ class ProfileController extends Controller
 
   function index()
   {
-    $USER = $this->loadModel("UserModel");
-    $data['current_page'] = "Profile";
+    $data['current_page'] = "Dashboard";
     $this->loadView("profile", $data);
   }
 

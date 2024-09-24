@@ -1,18 +1,60 @@
 <?php
 // Explicit function created by programmer 
+function getUserIpAddr()
+{
+  if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+    // Check if the IP is from the shared Internet
+    return $_SERVER['HTTP_CLIENT_IP'];
+  } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    // Check for forwarded IP addresses
+    return strtok($_SERVER['HTTP_X_FORWARDED_FOR'], ','); // Get the first IP in the list
+  }
+
+  // Return the remote IP address
+  return $_SERVER['REMOTE_ADDR'];
+}
+
+function getUserOperatingSystem($user_agent)
+{
+  // Define an array to hold the operating system information
+  $os_platform = "Unknown OS";
+
+  // Check for different operating systems in the User-Agent string
+  if (preg_match('/windows/i', $user_agent)) {
+    $os_platform = 'Windows';
+  } elseif (preg_match('/macintosh|mac os x/i', $user_agent)) {
+    $os_platform = 'Mac OS';
+  } elseif (preg_match('/linux/i', $user_agent)) {
+    $os_platform = 'Linux';
+  } elseif (preg_match('/android/i', $user_agent)) {
+    $os_platform = 'Android';
+  } elseif (preg_match('/iphone|ipad|ipod/i', $user_agent)) {
+    $os_platform = 'iOS';
+  }
+
+  return $os_platform;
+}
+$user_agent = $_SERVER['HTTP_USER_AGENT'];
+$user_ip = getUserIpAddr();
+
+
+
+
+
 
 function sessionFloatingAlert($type, $message)
 {
   if (isset($_SESSION['floating_alert']) && $_SESSION['floating_alert'] === $message) {
     echo '
-    <div id="sessionFloatingAlert" class="floating-alert alert alert-'.$type.' d-flex w-100 shadow" role="alert">
+    <div id="sessionFloatingAlert" class="floating-alert alert alert-' . $type . ' d-flex w-100 shadow" role="alert">
       <span class="text mx-auto">' . $message . '.</span>
     </div>';
     unset($_SESSION['floating_alert']);
   }
 }
 
-function uppercaseFirstLetter($str) {
+function uppercaseFirstLetter($str)
+{
   return ucfirst($str);
 }
 

@@ -4,13 +4,11 @@
 
   <?php $this->loadView("components/top-navbar", $data); ?>
   <div class="container d-flex flex-column align-items-center p-3">
-    <div class="card" style="width:400px;">
+    <div class="card" style="max-width:400px;">
       <div class="card-body p-3">
         <div class="text-center">
           <h3>Login</h3>
         </div>
-
-        
         <?php if (isset($_SESSION['login_form_errors_messages']) && is_array($_SESSION['login_form_errors_messages']) && !empty($_SESSION['login_form_errors_messages'])): ?>
           <div id="alertPlaceholder">
             <div class="alert alert-danger" role="alert">
@@ -23,7 +21,6 @@
           </div>
         <?php endif; ?>
 
-
         <form action="login/authenticate" method="POST">
 
           <div class="form-floating mb-3">
@@ -33,7 +30,8 @@
               class="form-control <?= (isset($_SESSION['login_form_errors_messages']) && is_array($_SESSION['login_form_errors_messages']) && (in_array("Username is required.", $_SESSION['login_form_errors_messages']) || in_array("Username is invalid.", $_SESSION['login_form_errors_messages']))) ? 'is-invalid' : ''; ?>"
               placeholder=""
               value="<?= $_SESSION['input_username'] ?? '' ?>"
-              name="username">
+              name="username"
+              required>
 
             <label for="inputUsername">Username</label>
           </div>
@@ -43,11 +41,14 @@
               type="password"
               class="form-control <?= (isset($_SESSION['login_form_errors_messages']) && is_array($_SESSION['login_form_errors_messages']) && (in_array("Password is required.", $_SESSION['login_form_errors_messages']) || in_array("Password is invalid.", $_SESSION['login_form_errors_messages']))) ? 'is-invalid' : ''; ?>"
               placeholder=""
-              name="password">
+              name="password"
+              required>
             <label for="inputPassword">Password</label>
           </div>
-          
-          <div class="mb-3 d-flex justify-content-center border rounded p-3" style="background-image: url('assets/img/bg_for_recaptcha.png');">
+
+          <div
+            class="mb-3 d-flex justify-content-center border rounded p-3 <?= (isset($_SESSION['login_form_errors_messages']) && is_array($_SESSION['login_form_errors_messages']) && in_array("reCAPTCHA verification failed. Please try again.", $_SESSION['login_form_errors_messages'])) ? 'border-danger' : ''; ?>"
+            style="background-image: url('assets/img/bg_for_recaptcha.png');">
             <div class="g-recaptcha" data-sitekey="6Lfs0k0qAAAAAChTLR023tGAFt1yvkSaOrkudjfy"></div>
           </div>
 

@@ -4,7 +4,7 @@
 
   <?php $this->loadView("components/top-navbar", $data); ?>
   <div class="container d-flex flex-column align-items-center p-3">
-    <div class="card" style="width:400px;">
+    <div class="card" style="max-width:400px;">
       <div class="card-body p-3">
         <div class="text-center">
           <h3>Contact</h3>
@@ -76,7 +76,9 @@
               required><?= $_SESSION['input_message'] ?? '' ?></textarea>
             <label for="message" class="form-label">Message</label>
           </div>
-          <div class="mb-3 d-flex justify-content-center border rounded p-3" style="background-image: url('assets/img/bg_for_recaptcha.png');">
+          <div
+            class="mb-3 d-flex justify-content-center border rounded p-3  <?= (isset($_SESSION['contact_form_errors_messages']) && is_array($_SESSION['contact_form_errors_messages']) && in_array("reCAPTCHA verification failed. Please try again.", $_SESSION['contact_form_errors_messages'])) ? 'border-danger' : ''; ?>"
+            style="background-image: url('assets/img/bg_for_recaptcha.png');">
             <div class="g-recaptcha" data-sitekey="6Lfs0k0qAAAAAChTLR023tGAFt1yvkSaOrkudjfy"></div>
           </div>
           <button type="submit" class="btn btn-primary btn-lg w-100">Send Message</button>
