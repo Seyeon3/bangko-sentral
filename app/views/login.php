@@ -10,6 +10,7 @@
           <h3>Login</h3>
         </div>
 
+        
         <?php if (isset($_SESSION['login_form_errors_messages']) && is_array($_SESSION['login_form_errors_messages']) && !empty($_SESSION['login_form_errors_messages'])): ?>
           <div id="alertPlaceholder">
             <div class="alert alert-danger" role="alert">

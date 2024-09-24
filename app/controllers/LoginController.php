@@ -20,14 +20,14 @@ class LoginController extends Controller
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       // Initialize session variables
       $_SESSION['login_form_errors_messages'] = [];
-      $_SESSION['input_username'] = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+      $_SESSION['input_username'] = htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');
 
       // Validate input fields first
       if (empty($_SESSION['input_username'])) {
         $_SESSION['login_form_errors_messages'][] = "Username is required.";
       }
 
-      $inputPassword = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+      $inputPassword = htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8');
       if (empty($inputPassword)) {
         $_SESSION['login_form_errors_messages'][] = "Password is required.";
       }
