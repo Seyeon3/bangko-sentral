@@ -21,9 +21,9 @@
             </div>
           </div>
         <?php endif; ?>
-        <form>
+        <form action="contact/send" method="POST">
           <div class="mb-3 form-floating">
-            <input type="text" class="form-control" id="name" placeholder="" required>
+            <input type="text" class="form-control" id="full_name" placeholder="" required>
             <label for="name" class="form-label">Full Name</label>
           </div>
           <div class="mb-3 form-floating">

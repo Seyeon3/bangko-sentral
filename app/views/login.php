@@ -23,7 +23,7 @@
         <?php endif; ?>
 
 
-        <form id="formLogin" action="login/authenticate" method="POST">
+        <form action="login/authenticate" method="POST">
 
           <div class="form-floating mb-3">
             <input
