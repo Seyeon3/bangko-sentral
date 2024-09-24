@@ -62,11 +62,13 @@ class LoginController extends Controller
           // Successful authentication
           $_SESSION['user_id'] = $returnData[0]->user_id;
           $_SESSION['username'] = $returnData[0]->username;
+          $USER->insertLoginAttempt($_SESSION['input_username'], true);
           header('Location: ' . PAGE . 'dashboard'); // Redirect to the dashboard page
           exit();
         } else {
           // Password is invalid
           $_SESSION['login_form_errors_messages'][] = "Password is invalid.";
+          $USER->insertLoginAttempt($_SESSION['input_username'], false);
           header('Location: ' . PAGE . 'login');
           exit();
         }

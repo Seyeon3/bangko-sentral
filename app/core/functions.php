@@ -34,13 +34,6 @@ function getUserOperatingSystem($user_agent)
 
   return $os_platform;
 }
-$user_agent = $_SERVER['HTTP_USER_AGENT'];
-$user_ip = getUserIpAddr();
-
-
-
-
-
 
 function sessionFloatingAlert($type, $message)
 {

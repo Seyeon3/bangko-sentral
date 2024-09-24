@@ -12,7 +12,7 @@ class DashboardController extends Controller
   function index()
   {
     $data['current_page'] = "Dashboard";
-    $this->loadView("profile", $data);
+    $this->loadView("dashboard", $data);
   }
 
   function invalid_page()
