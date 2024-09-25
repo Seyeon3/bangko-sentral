@@ -9,27 +9,26 @@
         <div class="text-center">
           <h3>Login</h3>
         </div>
-        <?php if (isset($_SESSION['login_form_errors_messages']) && is_array($_SESSION['login_form_errors_messages']) && !empty($_SESSION['login_form_errors_messages'])): ?>
+        <?php if (!empty($data['login_form_errors_messages'])) : ?>
           <div id="alertPlaceholder">
             <div class="alert alert-danger" role="alert">
               <ul class="mb-0">
-                <?php foreach ($_SESSION['login_form_errors_messages'] as $message): ?>
+                <?php foreach ($data['login_form_errors_messages'] as $message): ?>
                   <li class="text-break"><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></li>
                 <?php endforeach; ?>
               </ul>
             </div>
           </div>
         <?php endif; ?>
-
         <form action="login/authenticate" method="POST">
 
           <div class="form-floating mb-3">
             <input
               id="inputUsername"
               type="text"
-              class="form-control <?= (isset($_SESSION['login_form_errors_messages']) && is_array($_SESSION['login_form_errors_messages']) && (in_array("Username is required.", $_SESSION['login_form_errors_messages']) || in_array("Username is invalid.", $_SESSION['login_form_errors_messages']))) ? 'is-invalid' : ''; ?>"
+              class="form-control <?=$data['input_username_red_border']?>"
               placeholder=""
-              value="<?= $_SESSION['input_username'] ?? '' ?>"
+              value="<?=$data['input_username_value']?>"
               name="username"
               required>
 
@@ -39,7 +38,7 @@
             <input
               id="inputPassword"
               type="password"
-              class="form-control <?= (isset($_SESSION['login_form_errors_messages']) && is_array($_SESSION['login_form_errors_messages']) && (in_array("Password is required.", $_SESSION['login_form_errors_messages']) || in_array("Password is invalid.", $_SESSION['login_form_errors_messages']))) ? 'is-invalid' : ''; ?>"
+              class="form-control <?=$data['input_password_red_border']?>"
               placeholder=""
               name="password"
               required>
@@ -47,7 +46,7 @@
           </div>
 
           <div
-            class="mb-3 d-flex justify-content-center border rounded py-3 <?= (isset($_SESSION['login_form_errors_messages']) && is_array($_SESSION['login_form_errors_messages']) && in_array("reCAPTCHA verification failed. Please try again.", $_SESSION['login_form_errors_messages'])) ? 'border-danger' : ''; ?>"
+            class="mb-3 d-flex justify-content-center border rounded py-3 <?=$data['checkbox_recaptcha_red_border']?>"
             style="background-image: url('assets/img/bg_for_recaptcha.png');">
             <div class="g-recaptcha" data-sitekey="6Lfs0k0qAAAAAChTLR023tGAFt1yvkSaOrkudjfy"></div>
           </div>
@@ -62,8 +61,7 @@
     </div>
   </div>
 
-  <?php unset($_SESSION['login_form_errors_messages']); ?>
-  <?php unset($_SESSION['input_username']); ?>
+
   <?php $this->loadView("components/scripts"); ?>
 </body>
 

@@ -12,7 +12,27 @@ class ContactController extends Controller
   function index() //default method
   {
     $data['current_page'] = "Contact";
+    $data['contact_form_success_message'] = $_SESSION['contact_form_success_message'] ?? null;
+    $data['contact_form_errors_messages'] = $_SESSION['contact_form_errors_messages'] ?? null;
+
+    $data['input_full_name_red_border'] = !empty($data['contact_form_errors_messages']) && in_array("Full Name must be greater than 3 characters and less than 20 characters.", $_SESSION['contact_form_errors_messages']) ? 'is-invalid' : '';
+    $data['input_subject_red_border'] = !empty($data['contact_form_errors_messages']) && in_array("Subject must be between 3 and 100 characters.", $_SESSION['contact_form_errors_messages']) ? 'is-invalid' : '';
+    $data['input_message_red_border'] = !empty($data['contact_form_errors_messages']) && in_array("Message must be between 3 and 255 characters.", $_SESSION['contact_form_errors_messages']) ? 'is-invalid' : '';
+    $data['checkbox_recaptcha_red_border'] = !empty($data['contact_form_errors_messages']) && in_array("reCAPTCHA verification failed. Please try again.", $_SESSION['contact_form_errors_messages']) ? 'border-danger' : '';
+   
+    $data['input_full_name_value'] = $_SESSION['input_full_name'] ?? '';
+    $data['input_email_value'] = $_SESSION['input_email'] ?? '';
+    $data['input_subject_value'] = $_SESSION['input_subject'] ?? '';
+    $data['input_message_value'] = $_SESSION['input_message'] ?? '';
+    
     $this->loadView("contact", $data);
+
+    unset($_SESSION['contact_form_errors_messages']);
+    unset($_SESSION['input_full_name']);
+    unset($_SESSION['input_email']);
+    unset($_SESSION['input_subject']);
+    unset($_SESSION['input_message']);
+    unset($_SESSION['contact_form_success_message']);
   }
 
   function send()

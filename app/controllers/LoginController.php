@@ -12,7 +12,16 @@ class LoginController extends Controller
   function index() //default method
   {
     $data['current_page'] = "Login";
+    $data['login_form_errors_messages'] = $_SESSION['login_form_errors_messages'] ?? null;
+    $data['input_username_red_border'] = !empty($data['login_form_errors_messages']) && in_array("Username is invalid.", $_SESSION['login_form_errors_messages']) ? 'is-invalid' : '';
+    $data['input_password_red_border'] = !empty($data['login_form_errors_messages']) && in_array("Password is invalid.", $_SESSION['login_form_errors_messages']) ? 'is-invalid' : '';
+    $data['checkbox_recaptcha_red_border'] = !empty($data['login_form_errors_messages']) && in_array("reCAPTCHA verification failed. Please try again.", $_SESSION['login_form_errors_messages']) ? 'border-danger' : '';
+    $data['input_username_value'] = $_SESSION['input_username'] ?? '';
+    
     $this->loadView("login", $data);
+
+    unset($_SESSION['login_form_errors_messages']);
+    unset($_SESSION['input_username']);
   }
 
   function authenticate()
