@@ -31,7 +31,6 @@
               value="<?=$data['input_username_value']?>"
               name="username"
               required>
-
             <label for="inputUsername">Username</label>
           </div>
           <div class="form-floating mb-3">
