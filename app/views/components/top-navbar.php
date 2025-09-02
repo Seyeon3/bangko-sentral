@@ -3,7 +3,7 @@
     <!-- Logo -->
     <a class="navbar-brand" href="">
       <img src="logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
-      <span>User Authentication</span>
+      <span>Philippine National Bank</span>
     </a>
 
     <!-- Navbar Toggler (for mobile view) -->
@@ -12,13 +12,13 @@
     </button>
 
     <!-- Links -->
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav nav nav-underline">
         <li class="nav-item">
           <a class="nav-link <?= $data['current_page'] == 'Login' ? 'active' : '' ?>" href="login">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?= $data['current_page'] == 'Contact' ? 'active' : '' ?>" aria-current="page" href="contact">Contact</a>
+          <a class="nav-link <?= $data['current_page'] == 'Register' ? 'active' : '' ?>" href="register">Register</a>
         </li>
       </ul>
     </div>

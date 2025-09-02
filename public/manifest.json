@@ -1,7 +1,7 @@
 {
-  "name": "Authenticate App",
-  "short_name": "Auth",
-  "description": "Authenticate Application",
+  "name": "PNB SYSTEM",
+  "short_name": "PNB",
+  "description": "PHILIPPINE NATIONAL BANK",
   "start_url": "login",
   "display": "standalone",
   "background_color": "#ffffff",

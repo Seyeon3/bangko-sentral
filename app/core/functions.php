@@ -1,5 +1,16 @@
 <?php
 // Explicit function created by programmer 
+
+function formatBalance($amount) {
+  // Ensure the amount is a number and format it
+  if (is_numeric($amount)) {
+      return '₱' . number_format($amount, 2); // Format with 2 decimal places
+  } else {
+      return '₱0.00'; // Default to zero if the input is not a number
+  }
+}
+
+
 function getUserIpAddr()
 {
   if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
@@ -128,3 +139,5 @@ function isNullDate($datetime)
     return datePrettierWithTime($datetime);
   }
 }
+
+

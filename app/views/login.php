@@ -5,9 +5,10 @@
   <?php $this->loadView("components/top-navbar", $data); ?>
   <div class="container d-flex flex-column align-items-center p-3">
     <div class="card w-100" style="max-width:400px;">
-      <div class="card-body p-3">
+      <div class="card-body shadow p-3">
         <div class="text-center">
           <h3>Login</h3>
+          <p>Login with your username and password</p>
         </div>
         <?php if (!empty($data['login_form_errors_messages'])) : ?>
           <div id="alertPlaceholder">
@@ -26,9 +27,9 @@
             <input
               id="inputUsername"
               type="text"
-              class="form-control <?=$data['input_username_red_border']?>"
+              class="form-control <?= $data['input_username_red_border'] ?>"
               placeholder=""
-              value="<?=$data['input_username_value']?>"
+              value="<?= $data['input_username_value'] ?>"
               name="username"
               required>
             <label for="inputUsername">Username</label>
@@ -37,7 +38,7 @@
             <input
               id="inputPassword"
               type="password"
-              class="form-control <?=$data['input_password_red_border']?>"
+              class="form-control <?= $data['input_password_red_border'] ?>"
               placeholder=""
               name="password"
               required>
@@ -45,9 +46,9 @@
           </div>
 
           <div
-            class="mb-3 d-flex justify-content-center border rounded py-3 <?=$data['checkbox_recaptcha_red_border']?>"
+            class="mb-3 d-flex justify-content-center border rounded py-3 <?= $data['checkbox_recaptcha_red_border'] ?>"
             style="background-image: url('assets/img/bg_for_recaptcha.png');">
-            <div class="g-recaptcha" data-sitekey="6Lfs0k0qAAAAAChTLR023tGAFt1yvkSaOrkudjfy"></div>
+            <div class="g-recaptcha" data-sitekey="6Lc3n1IqAAAAAEwfoua5p8G_DAE2EzkcTdGJ4EW-"></div>
           </div>
 
           <div>
@@ -56,10 +57,12 @@
             </button>
           </div>
         </form>
-      </div>
+        <div class="d-flex justify-content-center mt-3">
+          <a href="forgotpassword" class="text-decoration-none">Forgot Password?</a>
+        </div>
+      </div> <!--card end-->
     </div>
   </div>
-
 
   <?php $this->loadView("components/scripts"); ?>
 </body>

@@ -14,7 +14,7 @@
       <a class="nav-link text-secondary active" href="#"><i class="bi bi-speedometer2 m-3 fs-5"></i>Dashboard</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-secondary" href=""><i class="bi bi-person-circle m-3 fs-5"></i><?= $_SESSION['full_name'] ?></a>
+      <a class="nav-link text-secondary" href="AccountDetail"><i class="bi bi-person-circle m-3 fs-5"></i><?= $_SESSION['full_name'] ?></a>
     </li>
     <li class="nav-item">
       <a class="nav-link text-danger" href="logout"><i class="bi bi-box-arrow-left m-3 fs-5"></i>Logout</a>

@@ -1,8 +1,8 @@
 <?php
 // CONSTANT GLOBAL
-define('WEBSITE_TITLE', "User Authentication");
+define('WEBSITE_TITLE', "Philippine National Bank");
 define('DB_TYPE', 'mysql');
-define('DB_NAME', 'user_authentication');
+define('DB_NAME', 'bangko');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_HOST', 'localhost');
